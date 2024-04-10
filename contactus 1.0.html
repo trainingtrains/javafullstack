@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        /* Basic CSS for form layout */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label, input, textarea {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            form {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="POST"> <!-- Replace '#' with your form submission URL -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

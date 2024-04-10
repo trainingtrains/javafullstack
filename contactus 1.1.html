@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        /* Basic CSS for form layout */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label, input, textarea {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error message style */
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="contactForm" action="#" method="POST"> <!-- Replace '#' with your form submission URL -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <div id="nameError" class="error"></div>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <div id="emailError" class="error"></div>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <div id="messageError" class="error"></div>
+        
+        <button type="submit" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            var nameError = document.getElementById("nameError");
+            var emailError = document.getElementById("emailError");
+            var messageError = document.getElementById("messageError");
+
+            nameError.innerHTML = "";
+            emailError.innerHTML = "";
+            messageError.innerHTML = "";
+
+            var isValid = true;
+
+            if (name.trim() === "") {
+                nameError.innerHTML = "Name is required";
+                isValid = false;
+            }
+
+            if (email.trim() === "") {
+                emailError.innerHTML = "Email is required";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.innerHTML = "Invalid email format";
+                isValid = false;
+            }
+
+            if (message.trim() === "") {
+                messageError.innerHTML = "Message is required";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            // Basic email validation regex
+            var emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>
